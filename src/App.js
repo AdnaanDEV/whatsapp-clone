@@ -1,29 +1,38 @@
-import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState,useContext } from "react";
 import "./App.css";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
-import SidebarChat from "./SidebarChat";
-
-
-
+import Login from "./Login"
+import { StateContext, useStateValue } from "./StateProvider";
 
 function App() {
+  // const [user, setUser] = useState(null);
+  // const [userState,dispatch] = useStateValue();
+  const [user,dispatch] = useContext(StateContext)
   return (
-
     // BEM naming convention
     <div className="app">
 
-      <div className="app__body"  >
-        <Sidebar />
-        <Chat />
-      
+      {!user.user ? (
 
-  
-        {/* Chat */}
-     
+        <Login />
+      ) : (
+        <div className="app__body">
+          <Router>
+            <Sidebar />
+            <Switch>
+              <Route path="/rooms/:roomId">
+                <Chat />
+              </Route>
 
-      </div>
-    
+              <Route path="/">
+                <Chat />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,13 +7,16 @@
 
 .sidebar__header {
     display: flex;
+    flex-direction: row;
     padding: 24px;
     justify-content: space-between;
+
   
 }
 
 .sidebar__headerRight {
     display: flex;
+    flex-direction: row;
     align-items: center;
 
 }
@@ -25,7 +28,7 @@
 
 .sidebar__search {
   display: flex;
- 
+  flex-direction: row;
   height: 39px;
   background-color: #f6f6f6;
   align-items: center;
@@ -36,11 +39,12 @@
 
 .sidebar__searchContainer {
    display: flex;
+   flex-direction: row;
    align-items: center;
-   width: 100%;
    background-color: #fff;
    border-radius: 20px;
    height: 35px;
+   width: 100%;
   
   
 }
